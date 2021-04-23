@@ -53,24 +53,52 @@ Teniendo esto en cuenta, esta actividad tiene como objetivo poner a prueba las d
 \section{Contenido} \label{contenido}
 Segun los requisitos establecidos por la actividad, se describira el analisis del problema y sus soluciones, un esquema de tareas, el algoritmo, los problemas que se presentaron. 
 
-\subsection{Analisis del problema y sus soluciones}
-Un negocio que quiere atraer mas clientes, nos pide generear un letrero que imprime un mensaje usando matrices de leds, con el fin de que los clientes encuentren el negocio con facilidad y lo recuerden, para que asi puedan volver. Este letrero hecho por leds debe funcionar cuando el negocio este abierto o se este ofreciendo algun producto en particular.
+\subsection{Analisis del problema y sus alternativas de solucion}
+Un negocio que quiere atraer mas clientes, nos pide generear un letrero que imprime un mensaje usando matrices de leds, con el fin de que los clientes encuentren el negocio con facilidad y lo recuerden, para que asi puedan volver. Este letrero hecho por leds debe funcionar cuando el negocio este abierto o se este ofreciendo algun producto en particular.\\
+
+Para hallar una solucion a este proyecto se hara uso de diversos metodos como:
 \begin{itemize}
-    \item Para desarrollar este proyecto se hara uso de la plataforma de Tinkercad, ya que es una plataforma online que nos permite una inmersion al mundo de diseño 3D, por lo tal, se podra realizar el circuito sin tener que preocurse por riesgo que conlleva un circuito fisico.
-    \item 
+    \item Hacer uso de herramientas:
+    \begin{itemize}
+        \item Para desarrollar este proyecto se hara uso de la plataforma de Tinkercad, ya que se podra realizar el circuito sin tener que preocurse por riesgo que conlleva un circuito fisico.
+    \item Se utilizara una aplicacion de desarrollo de programa llamada QT, que nos permitira la facilidad de hacer el codigo que se implementara en el circuito.
+    \end{itemize}
+    \item Se investigara sobre las areas que se desconocen usando paginas wed o pidiendo guias a personas experimentadas con el conocimiento suficiente para ayudarnos, en este caso, los profesores.
 \end{itemize}
 
-\subsection{Esquema de desarrollo del algoritmo}
+\subsection{Esquema de tareas definidas en el desarrollo del algoritmo}
 \begin{itemize}
     \item Lo primero que se hizo fue entender lo que nos pide la actividad, despues cada quien empieza a buscar ideas de posibles soluciones para la construccion del circuito. Cuando nos reunimos, se empieza a desarrollar el circuito a partir de quien tiene mejores bases para su construccion.
     \item Para la creacion de codigo, cada miembro del equipo empezara su elaboracion hasta que se exponga su correcto funcionamiento.\\ 
     En esta parte es donde se encontrara mas problemas, por eso, cada vez que un miembro encuentre un error los otros lo ayudaran a resolverlo hasta que funcione correctamente.
+    \item Se implementara en el algoritmo funciones que nos serviran para verificar que el circuito funciona correctamente, ingresar y mostrar un patron.
 \end{itemize}
 \subsection{Algoritmo}
+\begin{enumerate}
+    \item Inicializacion de pines.
+    \item Usamos las funcion GetBit para sacar informacion que se presentara en el display
+    \item Se hace uso de la funcion verifi, se creo para verificar que todos los leds se enciendan.
+    \item La funcion iMPatron nos ayudara a mostrar el patron ingresado por el usuario.
+\end{enumerate}
+\subsection{Problemas que se presentaron}
+\subsection{Evolucion del algoritmo y consideraciones en su implementacion}
+\begin{enumerate}
+    \item Crear el circuito de arduino,se hizo uso de integradores 74HC595, resistencias y transistores. Se hizo el cableado respectivo para que cada integrador correspondiera con una fila de leds.\\
+    Se tuvo que reconstruir el circuito debido a que no se podia usar transistores.Se cambiaron por resistencias las cuales se conectaron a cada integrador.
+    \item
+\end{enumerate}
+\section{Manual}
+Este manual tiene como objetivo indicar a cualquier persona como utilizar el programa.\\
+Se debe tener en cuenta que el programa esta construido para encender una matriz de leds 8x8.\\
+\begin{enumerate}
+    \item mediante la funcion verificar se comprobara que todos los leds enciendan.\\
+    \item la funcion imagen mostrara el patron ingresado mediante el encendido de los leds.
+\end{enumerate}
+
 
 
 \newpage
 \section{Conclusion} \label{conclusion}
-Para concluir, aunque no se tiene muchas ideas para el desarrollo de este proyecto, serviran como base para implementar y configurar el juego como mejor parezca, ya que estas ideas bases son de vital importantes para el tipo de juego que se quiere crear y daran bienvenidas a futuros cambios para mejorar, como el entretenimiento para los jugadores y la diversidad de escenas o para corregir fallos y llenar huecos que apareceran mas adelante.
+
 
 \end{document}
