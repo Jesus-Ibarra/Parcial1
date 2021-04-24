@@ -1,0 +1,124 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[spanish]{babel}
+\usepackage{listings}
+\usepackage{graphicx}
+\graphicspath{ {images/} }
+\usepackage{cite}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \vspace*{1cm}
+            
+        \Huge
+        \textbf{Informe de desarrollo del proyecto}
+            
+        \vspace{0.5cm}
+        \LARGE
+        Informática 2.
+            
+        \vspace{1.5cm}
+            
+        \textbf{Jose Manuel Rivera.\\
+        Julian Perez Lopez.\\
+        Jesús Antonio Ibarra.}
+            
+        \vfill
+            
+        \vspace{0.8cm}
+            
+        \Large
+        Despartamento de Ingeniería Electrónica y Telecomunicaciones\\
+        Universidad de Antioquia\\
+        Medellín\\
+        Abril de 2021
+            
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+\newpage
+\section{Introducción}\label{intro}
+¿Qué es Arduino?\\
+
+Arduino es una plataforma de desarrollo basada en una placa electrónica de hardware libre que incorpora un microcontrolador re-programable y una serie de pines.Estos permiten establecer conexiones entre el microcontrolador y los diferentes sensores de una manera muy sencilla.\\
+
+Teniendo esto en cuenta, esta actividad tiene como objetivo poner a prueba las destrezas en análisis de problemas y la capacidad para trabajar con Arduino e integrar la programación en C++, además de usar de manera adecuada las funciones de la plataforma que permiten controlar el puerto serial y los puertos digitales. Para desarrollar la actividad, se debe tener las destrezas y conocimientos fundamentales de la programación con C++, en donde se  resaltara las estructuras de programación como tipos de datos, apuntadores, arreglos y funciones; Las cuales nos permitira usar matrices de leds para imprimir mensajes
+
+
+\newpage
+
+\section{Contenido} \label{contenido}
+Segun los requisitos establecidos por la actividad, se describira el analisis del problema y sus soluciones, un esquema de tareas, el algoritmo, los problemas que se presentaron. 
+
+\subsection{Analisis del problema y sus alternativas de solucion}
+Un negocio que quiere atraer mas clientes, nos pide generear un letrero que imprime un mensaje usando matrices de leds, con el fin de que los clientes encuentren el negocio con facilidad y lo recuerden, para que asi puedan volver. Este letrero hecho por leds debe funcionar cuando el negocio este abierto o se este ofreciendo algun producto en particular.\\
+
+Para hallar una solucion a este proyecto se hara uso de diversos metodos como:
+\begin{itemize}
+    \item Hacer uso de herramientas:
+    \begin{itemize}
+        \item Para desarrollar este proyecto se hara uso de la plataforma de Tinkercad, ya que se podra realizar el circuito sin tener que preocurse por riesgo que conlleva un circuito fisico.
+    \item Se utilizara una aplicacion de desarrollo de programa llamada QT, que nos permitira la facilidad de hacer el codigo que se implementara en el circuito.
+    \end{itemize}
+    \item Se investigara sobre las areas que se desconocen usando paginas wed o pidiendo guias a personas experimentadas con el conocimiento suficiente para ayudarnos, en este caso, los profesores.
+    \item Se realizara un codigo que cumpla con la peticion propuesta de este proyecto, dicho codigo tendra funciones que nos permitira: verificar que si funcione la matriz de leds, poder ingresar patrones escogidas por el usuario y mostrarlo en el letrero led, y por ultimo, permitir al usuario ingresar una secuencia de patrones. 
+\end{itemize}
+
+\subsection{Esquema de tareas definidas en el desarrollo del algoritmo}
+
+\begin{itemize}
+    \item Lo primero que se hizo fue entender lo que nos pide la actividad, despues cada quien empieza a buscar ideas de posibles soluciones para la construccion del circuito. Cuando nos reunimos, se empieza a desarrollar el circuito a partir de quien tiene mejores bases para su construccion.
+    \item Para la creacion de codigo, cada miembro del equipo empezara su elaboracion hasta que se exponga su correcto funcionamiento.
+    En esta parte es donde se encontrara mas problemas, por eso, cada vez que un miembro encuentre un error los otros lo ayudaran a resolverlo hasta que funcione correctamente.
+    \item Se implementara en el codigo una serie de funciones que nos serviran para verificar que el circuito funciona correctamente, creando una matriz 8x8 donde cada componente es un 1, ya que con un 1 permitira que los leds se enciendan. Por tanto, esta funcion encendera todos los leds de la matriz, demostrandonos que estos leds si funcionan.
+    \item Se creo una funcion llamada imagen que permitira al usuario ingresar un patron. Para esto se le pedira al usuario que ingrese la posicion de leds que desee encender en un solo numero, es decir si se requiere encender los leds 4, 7 y 9, se ingresara el numero 479, los digitos pueden ser ingresados en cualquier orden pero que sea un digito entre 1 y 8, este proceso se repertia 8 veces ya que son 8 filas de 8 leds, seguidamente una funcion se encargara se formara una matriz de leds 8x8 donde los se pondra en cada posicion ingresada un 1 que significara que debe estar prendido ese led, y la matriz resultante sera el patron que se va a mostrar.
+    \item Utilizamos la funcion Pulso para hacer una señal de reloj en el puerto que se le indique, hacemos que  haya un deplazamiento o salida de datos en los integrados, estos datos seran el patron ingresado anteriormente. utilizando la funcion iMPatron, permitira al usuario ver el patron que ingreso en la funcion imagen, para esto llamamos la funcion Pulso en esta funcion, asi se mostrara el patron en la matriz de leds.
+    \item En el proyecto se nos pidio que el usuario pueda ingresar una secuencia de patrones en la matriz de leds, para lograr esto, se creo la funcion Publik que le permitira al usuario ingresar la cantidad de patrones que desea, luego esta funcion guardara cada patron en un arreglo, llamara a las funciones imagen e iMPatron para que pueda mostrarnos en la matriz de leds todas los patrones que el usuario ingreso.
+    \item Para comprobar si todo el codigo funciona correctamente, se ha hecho muchas simulaciones y correcciones, asi podemos dar por dado que el codigo funciona bien. Por ultimo, se plasmara lo que hemos desarrollado en el trasncurso del proyecto en un informe escrito y un video, para tener como garantia de que hemos logrado nuestro objetivo.
+\end{itemize}
+\subsection{Algoritmo}
+\begin{enumerate}
+    \item Inicialización de pines: Se utilizaran 5 pines digitales llamados serFila, Rfil, Rsalcol, RCol y RSalfil que se conectaran a los diferentes integrados 74HC595, en el setup configuramos estos pines como OUTPUT con pinMode().
+    \item  El propósito de la función Menu es ayudar a mejorar la organización del código y que se pueda hacer un seguimiento mas fácil a las instrucciones.
+    \item La función IngresarDa usara funciones, valga la redundancia de la función serial serial para poder mostrar y recibir datos por el puerto Serial lo cual permitirá ingresar todos lo datos que usuario necesite a lo largo del código.
+    \item Se hace uso de la función verifi, la cual se encarga de colocar unos (1) en todas las posiciones de una matriz 8x8 de modo que al enviarle esa matriz a iMPatron se enciendan todos los leds.
+    \item La función iMPatron imprime una matriz que toma como parámetro en la matriz de leds; El circuito esta diseñado de tal forma que un CI esta conectado individualmente en el cual salidas serán cada columna de la matriz de leds y los otros 8 CI se encargaran de ir registrando esos datos y imprimiéndolos en su respectiva fila, por lo tanto la función toma los datos en la columna de la matriz ingresada y se los envía al CI individual seguidamente realiza una señal de corrimiento y salida por medio de la función Pulso para que asi queden registrados los datos.
+    \item La función imagen nos permite modificar los datos de una matriz 8x8 en donde se deben ingresar enteros y los convertirá en unos y ceros, es decir, el usuario ingresara un numero entero, la función se encargara por medio de divisiones y el modulo de separar los dígitos del mismo y poner en esa respectiva posición un uno, y quedara un arreglo de ceros y unos los cuales corren ponderan a una posición de la matriz. El usuario ingresara un total de ocho números enteros que corresponderán a las filas del arreglo ingresado, dé modo que se esta función tomo un puntero como parámetro, servirá para modificar las posiciones ingresadas, por ultimo la matriz resultante se le enviara a la función iMPatron para que muestre ese patrón ingresado por el usuario.
+      \item La función Publik le permitirá al usuario ingresar la cantidad de patrones que desea ver y el tiempo entre cada patrón. Para esto piden los respectivos datos por medio de la función IngesarDa y se guardan en variables, seguidamente creamos un arreglo tridimensional por medio de memoria dinámica y hacemos uso de la función imagen para modificar cada patrón en ese arreglo. Por ultimo recorremos cada patrón ingresado y lo imprimimos por medio de la función iMPatron. 
+    
+    
+\end{enumerate}
+\subsection{Problemas que se presentarón}
+\begin{enumerate}
+    \item El primer obstáculo con el que nos enfrentamos fue desarrollar el circuito, ya cuando desarrollamos la primer idea del circuito empezamos a desarrollar el código pero seguidamente nos enteramos que no podíamos usar transistores así que se tuvo que modificar el circuito.    
+    \item Por parte de el desarrollo del código, solo se tuvo complicaciones en el uso de punteros y memoria dinámica dado que faltaba mas entendimiento frente a esos temas pero después de investigar se pudo implementar de manera exitosa.
+\end{enumerate}
+\subsection{Evolución del algoritmo y consideraciones en su implementación}
+\begin{enumerate}
+    \item Crear el circuito de Arduino, se hizo uso de circuitos integrados 74HC595 y resistencias. Se hizo el cableado respectivo para que cada integrador correspondiera con una fila de leds.\\
+    Se tuvo que reconstruir el circuito debido a que no se podía usar transistores. Se cambiaron por resistencias las cuales se conectaron a cada integrador, lo cual causo que tuviéramos que cambiar la lógica de las funciones que hasta ese momento habíamos implementado.
+    \item Para hacer el código mas fácil se seguir, se crearon funciones auxiliares las cuales fueron Pulso, iMPatron e IngresarDa,
+    \item Seguidamente se realizaron la funciones principales se empezó por verifi, después de desarrollo la función imagen la cual se pensaron varias opciones para ingresar los datos para crear la matriz, se propuso por codigo hexadecimal, binario o ingresar los datos uno por uno, pero estos metodos eran mas complejs o muy largos por lo tanto se decidio ingresar numeros enteros por cada fila. Para la función de publik solo era reutilizar la función imagen y repetirla el numero de patrones que quiere ingresar el usuario e implementar un arreglo tridimensional por medio de memoria dinámica, ya solo seria llamar a la función iMPatron para que imprimiera cada uno de esos patrones y  detener la ejecuciones tiempo que haya establecido el usuario
+    \item Por ultimo se organizo el código y se realizaron pruebas para comprobar su funcionamiento.
+\end{enumerate}
+\section{Manual}
+Este manual tiene como objetivo indicar a cualquier persona como utilizar el programa.\\
+Se debe tener en cuenta que el programa esta construido para encender una matriz de leds 8x8. El código fue desarrollado de tal forma que al momento de su ejecución sea mas fácil ver que pasos tiene que seguir\\
+\begin{enumerate}
+    \item Al principio  de la ejecución se le mostrara un menú en el cual se encuentran las opciones que se implementaron, seguidamente se le pedirá que ingrese la opción que requiera ejecutar por medio de un numero entero si ingresa un numero que no represente ninguna opción volverá a imprimirse el menú. Después de la ejecución la opción que elija se volverá a imprimir este menú y podrá ejecutar otra opción.\\
+    \item Si se ingreso la 1ra opción la cual es de verificación se prenderán los 64 led de la matriz y para volver al menú ingrese cualquier numero.
+    \item Si se ingreso la opción 2, se le pedirá al usuario que ingrese 8 números que representaran que led quieren que se prenda en la matriz de leds. tenga en cuenta que se le dirá numero corresponde con cada fila además tenga presente que la fila numero uno es la fila inferior en la matiz de leds y el led numero 1 en cada fila será el izquierdo y el 8 será el derecho. Por ultimo los dígitos del numero que ingrese deben ir del 1 al 8 y no importa que ingrese un digito repetido.
+    \item Si se ingreso la opción 3 se le pedirá ingresar la cantidad de patrones a mostrar y el tiempo de transición, seguidamente para esto se mostrara que patrón esta creando y de la misma forma que en la segunda opción tendrá que ingresar los datos del patrón deseado.
+\end{enumerate}
+
+
+
+\newpage
+
+\section{Conclusión}
+Ya realizado se aprendió un uso adecuado de punteros y la forma que usarlos para crear variables en memoria dinámica, ya que este tipo de conocimiento no se encontraba tan claro. Por otra parte se observo que se necesita desarrollar técnicas para facilitar el entendimiento del los problemas propuestos y consecuentemente realizar sus respectivas soluciones para así tener un mejor manejo del tiempo. Finalmente se aprendió que una buena organización del código ayuda a detectar mas fácil errores presentes en el mismo y darles solución facilitando así su desarrollo del tiempo.
+
+\end{document}
